@@ -1,8 +1,8 @@
 import comtradeapicall
 import pandas as pd
 
-primary_key = "b0fd16b80b964a84abd09d19d0535f87"
-secondary_key = "c64927444ac44bf3b1370ba84a827f85"
+primary_key = ""
+secondary_key = ""
 
 silicon = "280461"
 chem_elems = "381800"

@@ -1,10 +1,8 @@
 import pandas as pd
 
-# Load the dataset
 data = pd.read_csv("./column_filtered.csv")
 
-# Extract unique country names from the 'partnerCode' column
-unique_countries = sorted(set(data['partnerCode']))  # Sort for consistency
+unique_countries = sorted(set(data['partnerCode']))
 
 coords = {
     "Afghanistan": (33.93911, 67.709953),
@@ -166,16 +164,11 @@ coords = {
     "Zimbabwe": (-19.015438, 29.154857)
 }
 
-# Create a new DataFrame with country names and placeholders for Latitude and Longitude
 country_data = pd.DataFrame({
-    "Id": range(1, len(unique_countries) + 1),  # Create an index starting from 1
+    "Id": range(1, len(unique_countries) + 1),
     "Label": unique_countries,
     "Latitude": [coords[country][0] if country in coords else None for country in unique_countries],
     "Longitude": [coords[country][1] if country in coords else None for country in unique_countries]
 })
 
-# Save the new dataset to a CSV file
 country_data.to_csv("nodes.csv", index=False)
-
-# Print the result for verification
-print(country_data)

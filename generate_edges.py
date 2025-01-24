@@ -1,15 +1,12 @@
 import pandas as pd
 
-# Load the dataset
 data = pd.read_csv("column_filtered.csv")
 
-nodes = pd.read_csv("nodes.csv")  # Country-to-ID mapping
+nodes = pd.read_csv("nodes.csv")
 country_to_id = dict(zip(nodes['Label'], nodes['Id']))
 
-# Initialize an empty list to store rows for the new DataFrame
 rows = []
 
-# Iterate over each row in the dataset
 for _, row in data.iterrows():
     source = None
     target = None
@@ -28,11 +25,8 @@ for _, row in data.iterrows():
             "Type": "directed"
         })
 
-# Create the new DataFrame from the rows
 new_df = pd.DataFrame(rows)
 
-# Print the resulting DataFrame
 print(new_df)
 
-# Save the new DataFrame to a CSV file
 new_df.to_csv("edges.csv", index=False)
